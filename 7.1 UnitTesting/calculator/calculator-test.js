@@ -11,10 +11,11 @@ it("should return an object", function() {
   document.getElementById("loan-amount").value = 30000.00;
   document.getElementById("loan-years").value = 5;
   document.getElementById("loan-rate").value = 20;
-  //let lengthVar = Object.keys(getCurrentUIValues()).length
+  let lengthVar = Object.keys(getCurrentUIValues()).length
+  let obj3 = getCurrentUIValues();
 
-  expect(getCurrentUIValues().toBeInstanceOf(Object));
- // expect(lengthVar.toEqual(3));
+  expect(obj3.toBeInstanceOf(Object));
+ expect(lengthVar.toEqual(3));
 });
 
 
