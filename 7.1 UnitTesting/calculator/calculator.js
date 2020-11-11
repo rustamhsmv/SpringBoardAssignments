@@ -11,12 +11,11 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function getCurrentUIValues() {
-  let newObj = {
+  return {
     amount: +(document.getElementById("loan-amount").value),
     years: +(document.getElementById("loan-years").value),
     rate: +(document.getElementById("loan-rate").value)
   };
-  return newObj;
 }
 
 // Given an object of values (a value has amount, years and rate ),
@@ -27,8 +26,7 @@ function getCurrentUIValues() {
     let i = values.rate / (12 * 100);
     let n = values.years *12;
   
-    let monthly = (p * i) / (1 - ((1 + i)**(-n)));
-    return monthly.toFixed(2);
+    return monthly = ((p * i) / (1 - ((1 + i)**(-n)))).toFixed(2);
   }
 
   // Given a string representing the monthly payment value,
@@ -43,17 +41,12 @@ function updateMonthly(monthly) {
 function setupIntialValues() {
   document.getElementById("loan-amount").value = 30000.00;
   document.getElementById("loan-years").value = 5;
-  document.getElementById("loan-rate").value = 20;
-  let obj = getCurrentUIValues();
-  
-  let monthly = calculateMonthlyPayment(obj);
-  updateMonthly(monthly);
+  document.getElementById("loan-rate").value = 5;
+  update();
 }
 
 // Get the current values from the UI
 // Update the monthly payment
 function update() {
-  let monthly= calculateMonthlyPayment(getCurrentUIValues());
-  updateMonthly(monthly);
-  return monthly; 
+  updateMonthly(calculateMonthlyPayment(getCurrentUIValues())); 
 }
